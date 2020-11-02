@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a95dbaec77e84d05a3a40ec5c87dab7, type: 3}
+  m_Name: Windows
+  m_EditorClassIdentifier: 
+  shortCutList:
+  - shortCutName: "\u5168\u9078\u629E"
+    keyCode: 97
+  - shortCutName: "\u30B3\u30D4\u30FC"
+    keyCode: 99
+  - shortCutName: "\u5207\u308A\u53D6\u308A"
+    keyCode: 120
+  - shortCutName: "\u8CBC\u308A\u4ED8\u3051"
+    keyCode: 118
+  - shortCutName: "\u5143\u306B\u623B\u3059"
+    keyCode: 122
+  - shortCutName: "\u3084\u308A\u76F4\u3057"
+    keyCode: 121
+  - shortCutName: "\u4E0A\u66F8\u304D\u4FDD\u5B58"
+    keyCode: 115
+  - shortCutName: "\u691C\u7D22"
+    keyCode: 102
+  - shortCutName: "\u7F6E\u63DB"
+    keyCode: 104
+  - shortCutName: "\u5370\u5237"
+    keyCode: 112
+  - shortCutName: "\u30D5\u30A1\u30A4\u30EB\u3092\u958B\u304F"
+    keyCode: 111
+  - shortCutName: "\u30D5\u30A1\u30A4\u30EB\u3092\u9589\u3058\u308B"
+    keyCode: 119
+  - shortCutName: "\u65B0\u898F\u4F5C\u6210"
+    keyCode: 110

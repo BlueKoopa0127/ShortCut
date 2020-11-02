@@ -35,15 +35,15 @@ public class ShortCutTest : BaseShortCut
                 {
                     inputReceive = false;
 
-                    inputText.text += Input.inputString;
+                    inputText.text += GetKeyCode();
 
                     if (Input.GetKeyDown(CurrentSC.keyCode))
                     {
-                        Invoke("Correct", 1f);
+                        Invoke("Correct", 0.5f);
                     }
                     else
                     {
-                        Invoke("Incorrect", 1f);
+                        Invoke("Incorrect", 0.5f);
                     }
                 }
             }
@@ -70,6 +70,19 @@ public class ShortCutTest : BaseShortCut
         }
     }
 
+    private string GetKeyCode()
+    {
+        foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKeyDown(code) && sck != code)
+            {
+                return code.ToString();
+            }
+        }
+
+        return string.Empty;
+    }
+
     private void Correct()
     {
         CorrectIncorrect(true);
@@ -85,6 +98,7 @@ public class ShortCutTest : BaseShortCut
     private void CorrectIncorrect(bool co)
     {
         inputText.text = co ? "正解" : "不正解";
+        inputText.text += "\n" + sckName + " + " + CurrentSC.keyCode;
 
         Invoke("NextQuestion", 1f);
     }

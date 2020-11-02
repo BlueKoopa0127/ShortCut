@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a95dbaec77e84d05a3a40ec5c87dab7, type: 3}
+  m_Name: Linux
+  m_EditorClassIdentifier: 
+  shortCutList:
+  - shortCutName: "\u884C\u306E\u5148\u982D\u306B\u79FB\u52D5"
+    keyCode: 97
+  - shortCutName: "\u884C\u306E\u672B\u5C3E\u306B\u79FB\u52D5"
+    keyCode: 101
+  - shortCutName: "\u30AB\u30FC\u30BD\u30EB\u4F4D\u7F6E\u304B\u3089\u884C\u306E\u5148\u982D\u307E\u3067\u524A\u9664"
+    keyCode: 117
+  - shortCutName: "\u30AB\u30FC\u30BD\u30EB\u4F4D\u7F6E\u304B\u3089\u884C\u306E\u672B\u5C3E\u307E\u3067\u524A\u9664"
+    keyCode: 107
+  - shortCutName: "\u30B9\u30DA\u30FC\u30B9\u307E\u3067\u524A\u9664"
+    keyCode: 119
+  - shortCutName: "\u30B3\u30DE\u30F3\u30C9\u5F37\u5236\u7D42\u4E86"
+    keyCode: 99
+  - shortCutName: "\u30B3\u30DE\u30F3\u30C9\u5C65\u6B74\u306E\u691C\u7D22"
+    keyCode: 114
+  - shortCutName: "\u30BF\u30FC\u30DF\u30CA\u30EB\u306E\u30EA\u30BB\u30C3\u30C8"
+    keyCode: 105
+  - shortCutName: "1\u6587\u5B57\u6B21\u3078\u79FB\u52D5"
+    keyCode: 102
+  - shortCutName: "1\u6587\u5B57\u524D\u3078\u79FB\u52D5"
+    keyCode: 98
+  - shortCutName: "1\u3064\u524D\u306E\u30B3\u30DE\u30F3\u30C9\u3092\u8868\u793A"
+    keyCode: 112
+  - shortCutName: "1\u3064\u5F8C\u306E\u30B3\u30DE\u30F3\u30C9\u3092\u8868\u793A"
+    keyCode: 110
+  - shortCutName: "\u76F4\u524D\u306E1\u6587\u5B57\u3092\u524A\u9664"
+    keyCode: 104
+  - shortCutName: "\u30ED\u30B0\u30A2\u30A6\u30C8\u3084\u30C7\u30FC\u30BF\u30D9\u30FC\u30B9\u304B\u3089\u96E2\u8131/\u76F4\u5F8C\u306E1\u6587\u5B57\u3092\u524A\u9664"
+    keyCode: 100
+  - shortCutName: "\u753B\u9762\u306E\u66F4\u65B0\u3092\u505C\u6B62"
+    keyCode: 115
+  - shortCutName: "\u753B\u9762\u306E\u66F4\u65B0\u3092\u518D\u958B"
+    keyCode: 113

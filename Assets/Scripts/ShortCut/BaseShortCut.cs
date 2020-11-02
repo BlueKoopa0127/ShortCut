@@ -18,29 +18,48 @@ public class BaseShortCut : MonoBehaviour
 
     private void Initialize()
     {
-        switch (Application.platform)
+        ChangePlatform(Application.platform);
+    }
+
+    private void ChangePlatform(RuntimePlatform platform)
+    {
+        switch (platform)
         {
             case RuntimePlatform.OSXEditor:
-                sck = KeyCode.LeftCommand;
-                shortCutList = Resources.Load<Data.ShortCutList>("Mac").shortCutList;
+                OSX();
                 break;
 
             case RuntimePlatform.OSXPlayer:
-                sck = KeyCode.LeftCommand;
-                shortCutList = Resources.Load<Data.ShortCutList>("Mac").shortCutList;
+                OSX();
                 break;
 
             case RuntimePlatform.WindowsPlayer:
-                sck = KeyCode.LeftControl;
-                shortCutList = Resources.Load<Data.ShortCutList>("Windows").shortCutList;
+                Windows();
                 break;
 
             case RuntimePlatform.LinuxPlayer:
-                sck = KeyCode.LeftControl;
-                shortCutList = Resources.Load<Data.ShortCutList>("Linux").shortCutList;
+                Linux();
                 break;
         }
 
         sckName = sck.ToString().Substring(4);
+    }
+
+    private void OSX()
+    {
+        sck = KeyCode.LeftCommand;
+        shortCutList = Resources.Load<Data.ShortCutList>("Mac").shortCutList;
+    }
+
+    private void Windows()
+    {
+        sck = KeyCode.LeftControl;
+        shortCutList = Resources.Load<Data.ShortCutList>("Windows").shortCutList;
+    }
+
+    private void Linux()
+    {
+        sck = KeyCode.LeftControl;
+        shortCutList = Resources.Load<Data.ShortCutList>("Linux").shortCutList;
     }
 }
