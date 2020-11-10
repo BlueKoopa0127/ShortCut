@@ -6,8 +6,17 @@ public class ResultUnit : MonoBehaviour
 {
     private int correct, incorrect;
 
+    private static GameObject obj;
+
     private void Awake()
     {
+        if(obj != null)
+        {
+            Destroy(obj);
+        }
+
+        obj = gameObject;
+
         DontDestroyOnLoad(gameObject);
     }
 

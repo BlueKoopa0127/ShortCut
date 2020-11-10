@@ -12,13 +12,17 @@ public class ShortCutTest : BaseShortCut
 
     private bool inputReceive = true;
 
+    private List<Data.ShortCutUnit> randomShortCutList;
+
     private int correctCount = 0, incorrectCount = 0;
     private int count = -1;
-    private Data.ShortCutUnit CurrentSC { get { return shortCutList[count]; } }
+    private Data.ShortCutUnit CurrentSC { get { return randomShortCutList[count]; } }
 
     private void Start()
     {
-        shortCutList = shortCutList.OrderBy(a => Guid.NewGuid()).ToList();
+        randomShortCutList = new List<Data.ShortCutUnit>(shortCutList);
+
+        randomShortCutList = randomShortCutList.OrderBy(a => Guid.NewGuid()).ToList();
 
         NextQuestion();
     }
@@ -27,24 +31,19 @@ public class ShortCutTest : BaseShortCut
     {
         if (inputReceive)
         {
-            if (Input.GetKey(sck))
+            if (Input.anyKeyDown)
             {
-                inputText.text = sckName + " + ";
+                inputReceive = false;
 
-                if (!Input.GetKeyDown(sck) && Input.anyKeyDown)
+                inputText.text = sckName + " + " + GetKeyCode();
+
+                if (Input.GetKeyDown(CurrentSC.keyCode))
                 {
-                    inputReceive = false;
-
-                    inputText.text += GetKeyCode();
-
-                    if (Input.GetKeyDown(CurrentSC.keyCode))
-                    {
-                        Invoke("Correct", 0.5f);
-                    }
-                    else
-                    {
-                        Invoke("Incorrect", 0.5f);
-                    }
+                    Invoke("Correct", 0.5f);
+                }
+                else
+                {
+                    Invoke("Incorrect", 0.5f);
                 }
             }
         }
@@ -54,15 +53,13 @@ public class ShortCutTest : BaseShortCut
     {
         count++;
 
-        if (shortCutList.Count <= count)
+        if (randomShortCutList.Count <= count)
         {
-            GameObject.Find("ResultObject").GetComponent<ResultUnit>().SetResult(correctCount, incorrectCount);
-
-            UnityEngine.SceneManagement.SceneManager.LoadScene("ResultScene");
+            TestFinish();
         }
         else
         {
-            inputText.text = "正しいショートカットを入力してね";
+            inputText.text = sckName + "を押さずにショートカットを入力してね";
 
             inputReceive = true;
 
@@ -74,7 +71,7 @@ public class ShortCutTest : BaseShortCut
     {
         foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
         {
-            if (Input.GetKeyDown(code) && sck != code)
+            if (Input.GetKeyDown(code))
             {
                 return code.ToString();
             }
@@ -85,21 +82,28 @@ public class ShortCutTest : BaseShortCut
 
     private void Correct()
     {
-        CorrectIncorrect(true);
+        AddResult(true);
         correctCount++;
     }
 
     private void Incorrect()
     {
-        CorrectIncorrect(false);
+        AddResult(false);
         incorrectCount++;
     }
 
-    private void CorrectIncorrect(bool co)
+    private void AddResult(bool co)
     {
         inputText.text = co ? "正解" : "不正解";
         inputText.text += "\n" + sckName + " + " + CurrentSC.keyCode;
 
         Invoke("NextQuestion", 1f);
+    }
+
+    private void TestFinish()
+    {
+        GameObject.Find("ResultObject").GetComponent<ResultUnit>().SetResult(correctCount, incorrectCount);
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ResultScene");
     }
 }

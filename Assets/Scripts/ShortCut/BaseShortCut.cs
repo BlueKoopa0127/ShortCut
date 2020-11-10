@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class BaseShortCut : MonoBehaviour
 {
-    protected static KeyCode sck;
+    protected enum Version
+    {
+        Windows, Mac, Linux
+    }
+    protected static Version currentVersion;
+
     protected static string sckName;
     protected static List<Data.ShortCutUnit> shortCutList;
 
@@ -21,7 +26,7 @@ public class BaseShortCut : MonoBehaviour
         ChangePlatform(Application.platform);
     }
 
-    private void ChangePlatform(RuntimePlatform platform)
+    protected void ChangePlatform(RuntimePlatform platform)
     {
         switch (platform)
         {
@@ -41,25 +46,26 @@ public class BaseShortCut : MonoBehaviour
                 Linux();
                 break;
         }
-
-        sckName = sck.ToString().Substring(4);
     }
 
     private void OSX()
     {
-        sck = KeyCode.LeftCommand;
+        currentVersion = Version.Mac;
+        sckName = KeyCode.LeftCommand.ToString().Substring(4);
         shortCutList = Resources.Load<Data.ShortCutList>("Mac").shortCutList;
     }
 
     private void Windows()
     {
-        sck = KeyCode.LeftControl;
+        currentVersion = Version.Windows;
+        sckName = KeyCode.LeftControl.ToString().Substring(4);
         shortCutList = Resources.Load<Data.ShortCutList>("Windows").shortCutList;
     }
 
     private void Linux()
     {
-        sck = KeyCode.LeftControl;
+        currentVersion = Version.Linux;
+        sckName = KeyCode.LeftControl.ToString().Substring(4);
         shortCutList = Resources.Load<Data.ShortCutList>("Linux").shortCutList;
     }
 }
